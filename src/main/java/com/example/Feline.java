@@ -8,7 +8,6 @@ public class Feline extends Animal implements Predator {
     public List<String> eatMeat() throws Exception {
         return getFood("Хищник");
     }
-
     @Override
     public String getFamily() {
         return "Кошачьи";
@@ -21,5 +20,10 @@ public class Feline extends Animal implements Predator {
     public int getKittens(int kittensCount) {
         return kittensCount;
     }
+    private Kittens kittens;
 
+    public Feline()
+    {
+    this.kittens=kittens;
+    }
 }
