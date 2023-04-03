@@ -20,10 +20,5 @@ public class Feline extends Animal implements Predator {
     public int getKittens(int kittensCount) {
         return kittensCount;
     }
-    private Kittens kittens;
 
-    public Feline()
-    {
-    this.kittens=kittens;
-    }
 }

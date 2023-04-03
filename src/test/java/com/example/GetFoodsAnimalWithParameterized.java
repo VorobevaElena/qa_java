@@ -10,12 +10,12 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class GetFoodAnimalWithParameterized {
+public class GetFoodsAnimalWithParameterized {
 
     private final String checkedText;
     private final List expected;
 
-    public GetFoodAnimalWithParameterized(String checkedText, List expected) {
+    public GetFoodsAnimalWithParameterized(String checkedText, List expected) {
         this.checkedText = checkedText;
         this.expected = expected;
     }
