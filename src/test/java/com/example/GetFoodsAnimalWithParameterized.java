@@ -12,11 +12,11 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class GetFoodsAnimalWithParameterized {
 
-    private final String checkedText;
+    private final String animalKind;
     private final List expected;
 
-    public GetFoodsAnimalWithParameterized(String checkedText, List expected) {
-        this.checkedText = checkedText;
+    public GetFoodsAnimalWithParameterized(String animalKind, List expected) {
+        this.animalKind = animalKind;
         this.expected = expected;
     }
 
@@ -31,7 +31,7 @@ public class GetFoodsAnimalWithParameterized {
     @Test
     public void shouldCheckGetFood() throws Exception {
         Animal animal = new Animal();
-        List actual = animal.getFood(checkedText);
+        List actual = animal.getFood(animalKind);
         assertEquals("Питание каждого вида отличается (getFood для класса Animal)", expected, actual);
     }
 

@@ -9,11 +9,11 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class GetKittensFelineWithParametersTest {
 
-    private final int checkedInt;
+    private final int  kittensCount;
     private final int expected;
 
-    public GetKittensFelineWithParametersTest(int checkedInt, int expected) {
-        this.checkedInt = checkedInt;
+    public GetKittensFelineWithParametersTest(int  kittensCount, int expected) {
+        this. kittensCount =  kittensCount;
         this.expected = expected;
     }
 
@@ -30,7 +30,7 @@ public class GetKittensFelineWithParametersTest {
     @Test
     public void getKittensTest() {
         Feline feline = new Feline();
-        int actual = feline.getKittens(checkedInt);
+        int actual = feline.getKittens(kittensCount);
         assertEquals("Проверяем количество возвращаемых детей у хищника", expected, actual);
     }
 

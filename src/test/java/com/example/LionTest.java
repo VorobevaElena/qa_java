@@ -1,38 +1,41 @@
 package com.example;
 
-import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(MockitoJUnitRunner.class)
 public class LionTest{
-     Predator predator = new Feline();
+     @Mock
+     Feline feline;
+     @Test (expected = Exception.class)
+    public void doesHaveManeLionException() throws Exception {
 
-    @Test
-    public void doesHaveManeLionException() {
-        try {
-            Lion lion = new Lion("НЕсамец", predator);
-        } catch (Exception exception) {
-            assertEquals("При создании класса Lion использовался не верный аргумент", "Используйте допустимые значения пола животного - самец или самка", exception.getMessage());
-        }
+           new Lion("НЕсамка", feline);
+
     }
     @Test
     public void getFoodLionTest() throws Exception {
-        Lion lion = new Lion("Самка", predator);
-        Assert.assertEquals("Лев относится к хищникам, питается мясом", List.of("Животные", "Птицы", "Рыба"), lion.getFood());
+        Lion lion = new Lion("Самка", feline);
+        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
     }
     @Test
     public void doesHaveManeTest() throws Exception {
-        Lion lion = new Lion("Самец", predator);
-        Assert.assertEquals("Передав пол Самец, ожидаем значение true ", true, lion.doesHaveMane());
+        Lion lion = new Lion("Самец", feline);
+       assertEquals("Передав пол Самец, ожидаем значение true ", true, lion.doesHaveMane());
     }
     @Test
     public void getKittensLionTest() throws Exception {
-        Lion lion = new Lion("Самец", predator);
-        int actual = lion.getKittens();
-        assertEquals("Вызывая метод ожидаем: 1 ", 1, actual);
+        Lion lion = new Lion("Самец", feline);
+        Mockito.when(feline.getKittens()).thenReturn(1);
+        assertEquals(1, lion.getKittens());
     }
 
 }

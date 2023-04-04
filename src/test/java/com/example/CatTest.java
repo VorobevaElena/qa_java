@@ -11,20 +11,18 @@ import java.util.List;
 @RunWith(MockitoJUnitRunner.class)
 public class CatTest {
 
-   @Mock
     Feline feline;
     @Test
     public void getSoundTest() {
-        feline = Mockito.mock(Feline.class);
+        feline = new Feline();
         Cat cat = new Cat(feline);
         Assert.assertEquals("Звук кошки - Мяу", "Мяу", cat.getSound());
     }
-    @Spy
-    Feline felineS;
+
     @Test
     public void getFoodCatTest() throws Exception {
-        felineS = new Feline();
-        Feline felineSpy  = Mockito.spy(felineS);
+        feline = new Feline();
+        Feline felineSpy  = Mockito.spy(feline);
         Cat cat = new Cat(felineSpy);
         Assert.assertEquals("Кошки - это хищники.", List.of("Животные", "Птицы", "Рыба"), cat.getFood());
     }
