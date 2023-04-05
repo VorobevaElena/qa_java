@@ -4,26 +4,30 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
 @RunWith(MockitoJUnitRunner.class)
 public class CatTest {
 
+    @Mock
     Feline feline;
     @Test
     public void getSoundTest() {
         feline = new Feline();
         Cat cat = new Cat(feline);
-        Assert.assertEquals("Звук кошки - Мяу", "Мяу", cat.getSound());
+        assertEquals("Звук кошки - Мяу", "Мяу", cat.getSound());
     }
 
     @Test
     public void getFoodCatTest() throws Exception {
-        feline = new Feline();
-        Feline felineSpy  = Mockito.spy(feline);
-        Cat cat = new Cat(felineSpy);
-        Assert.assertEquals("Кошки - это хищники.", List.of("Животные", "Птицы", "Рыба"), cat.getFood());
+        Cat cat = new Cat(feline);
+        List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
+        Mockito.when(feline.eatMeat()).thenReturn(expectedFood);
+        List<String> actualFood = cat.getFood();
+        assertEquals(expectedFood, actualFood);
     }
 }

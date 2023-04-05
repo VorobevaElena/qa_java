@@ -22,9 +22,10 @@ public class LionTest{
     }
     @Test
     public void getFoodLionTest() throws Exception {
+        List<String> food = List.of("Животные", "Птицы", "Рыба");
         Lion lion = new Lion("Самка", feline);
-        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
+        Mockito.when(feline.getFood("Хищник")).thenReturn(food);
+        assertEquals(food, lion.getFood());
     }
     @Test
     public void doesHaveManeTest() throws Exception {
